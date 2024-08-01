@@ -1,4 +1,4 @@
-"""A dummy file to test the CI/CD template"""
+"""A dummy file to test the CI/CD template."""
 
 import numpy.typing as npt
 from scipy.sparse import csr_matrix, spmatrix
