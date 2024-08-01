@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+dynamic = ["dependencies"]
+name = "dummy_package"
+authors = [
+    {name = "Your Name"},
+]
+description = "A dummy package for illustrating the CI/CD template."
+version = "0.0.1"
+readme = "README.md"
+
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements.txt"}
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "docs"]
+
+[tool.setuptools.package-data]
+"dummy_package" = ["py.typed"]
