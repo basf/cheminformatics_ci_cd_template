@@ -1,7 +1,30 @@
-# This is a template for copying in to your own repository.
+# This is a template for a CI/CD workflow for your own Python package.
+#
+# Copy this template in to your repository and adapt it according to
+# the TODOs. All relevant parts are marked with a `TODO` in the following.
 
 name: code_check
 
+
+env:
+  # TODO for the user of this template: adapt the following variables to the names in your project.
+  #
+  # The template is designed for developing a Python package in the form:
+  # project_template/
+  # ├── package_src/
+  # │   └── __init__.py
+  # ├── tests/
+  # │   └── __init__.py
+  # The template can't know the name of the `package_src` and `tests` directories.
+  # So, you have to add them here:
+
+  # set the name of your Python package directory
+  PY_PACKAGE_DIR: package_src
+
+  # set the name of your unit test directory
+  PY_UNIT_TEST_DIR: tests
+
+  
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -9,6 +32,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
 
 jobs:
 
@@ -102,15 +126,14 @@ jobs:
       - name: Run unit-tests
         run: |
           # TODO for the user of this template:
-          #   You might have to adapt the call running the test coverage to fit your project structure:
-          #   - Test directory name: Rename the "tests" directory to the name of the directory containing your unit tests. For example, if your
-          #     unit test directory is called "my_unit_tests" you have to modify to `coverage run -m unittest discover my_unit_tests`.
-          #   - Choose your test backend: When you use some other unittesting framework than Python's standard `unittest` you have to adapt
-          #     the call to use your backend. For example, if you use pytest you would call `coverage run -m pytest tests`.
-          #   See https://coverage.readthedocs.io/en/latest/index.html for details.
+          #   You might have to adapt the call running the test coverage to fit your test backend.
+          #   The default unittesting framework is `unittest` from Python's standard library.
+          #   For example, if you use `pytest` you need to comment/uncomment the lines below.
+          #   For other backends and details see https://coverage.readthedocs.io/en/latest/index.html
           
           # Run test suite in the tests directory. 
-          coverage run -m unittest discover tests
+          coverage run -m unittest --source=$PY_PACKAGE_DIR discover $PY_UNIT_TEST_DIR
+          #coverage run -m pytest --source=$PY_PACKAGE_DIR discover $PY_UNIT_TEST_DIR  # uncomment if you use pytest 
           # Create a coverage report. Fail if the coverage is below 80%.
           coverage report --fail-under=80
 
