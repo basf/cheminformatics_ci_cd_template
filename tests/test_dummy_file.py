@@ -5,7 +5,7 @@ import unittest
 import numpy as np
 from scipy.sparse import issparse
 
-from src.dummy_file import dense_to_sparse
+from package_src.dummy_file import dense_to_sparse
 
 
 class TestDummyFile(unittest.TestCase):
