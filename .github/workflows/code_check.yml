@@ -129,8 +129,9 @@ jobs:
           #   For other backends and details see https://coverage.readthedocs.io/en/latest/index.html
           
           # Run test suite in the tests directory. 
-          coverage run --source=$PY_PACKAGE_DIR -m unittest discover $PY_UNIT_TEST_DIR
-          #coverage run --source=$PY_PACKAGE_DIR -m pytest discover $PY_UNIT_TEST_DIR  # uncomment if you use pytest 
+          coverage run --source=$PY_PACKAGE_DIR,$PY_UNIT_TEST_DIR -m unittest discover $PY_UNIT_TEST_DIR
+          # uncomment if you use pytest as test backend
+          #coverage run --source=$PY_PACKAGE_DIR,$PY_UNIT_TEST_DIR -m pytest discover $PY_UNIT_TEST_DIR 
           # Create a coverage report. Fail if the coverage is below 80%.
           coverage report --fail-under=80
 
