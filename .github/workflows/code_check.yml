@@ -5,7 +5,6 @@
 
 name: code_check
 
-
 env:
   # TODO for the user of this template: adapt the following variables to the names in your project.
   #
@@ -24,7 +23,6 @@ env:
   # set the name of your unit test directory
   PY_UNIT_TEST_DIR: tests
 
-  
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -32,7 +30,6 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 
 jobs:
 
@@ -127,13 +124,13 @@ jobs:
         run: |
           # TODO for the user of this template:
           #   You might have to adapt the call running the test coverage to fit your test backend.
-          #   The default unittesting framework is `unittest` from Python's standard library.
+          #   The default unittest framework is `unittest` from Python's standard library.
           #   For example, if you use `pytest` you need to comment/uncomment the lines below.
           #   For other backends and details see https://coverage.readthedocs.io/en/latest/index.html
           
           # Run test suite in the tests directory. 
-          coverage run -m unittest --source=$PY_PACKAGE_DIR discover $PY_UNIT_TEST_DIR
-          #coverage run -m pytest --source=$PY_PACKAGE_DIR discover $PY_UNIT_TEST_DIR  # uncomment if you use pytest 
+          coverage run --source=$PY_PACKAGE_DIR -m unittest discover $PY_UNIT_TEST_DIR
+          #coverage run --source=$PY_PACKAGE_DIR -m pytest discover $PY_UNIT_TEST_DIR  # uncomment if you use pytest 
           # Create a coverage report. Fail if the coverage is below 80%.
           coverage report --fail-under=80
 
