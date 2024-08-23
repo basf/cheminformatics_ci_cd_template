@@ -8,7 +8,7 @@ This ensures that your code is always in a good state and that you can easily co
 
 ## How to use
 
-The template is in the [`.github/workflows/code_check.yml`](.github%20workflows%20code_check.yml) file.
+The template is in the [`.github/workflows/code_check.yml`](.github/workflows/code_check.yml) file.
 To use the template, copy the `.github` folder to your repository and add the directory names of your
 project as indicated by the TODOs at the top of the `code_check.yml` file.
 
